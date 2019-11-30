@@ -1,0 +1,37 @@
+# importaciones
+# import * from "objects.graphql"
+# import * from "inputs.graphql"
+# import * from "responses.graphql"
+
+type Query {
+    """ listar works activos """
+    message: String
+}
+
+
+type Mutation {
+    """ crear meta presupuestal """
+    createMeta(input: inputCreateMeta): Response
+    """ crear planilla """
+    createPlanilla(input: inputCreatePlanilla): Response
+    """ crear cargo """
+    createCargo(input: inputCreateCargo): Response
+    """ crear categoria """
+    createCategoria(input: inputCreateCategoria): Response
+    """ create type_remuneracion """
+    createTypeRemuneracion(input: inputCreateTypeRemuneracion): Response
+    """ crear history """
+    createHistory(input: inputCreateHistory): Response
+    """ crear history masivamente """
+    createHistories(histories: [inputCreateHistory]): Response
+    """ crear tipo de cargo """
+    createTypeCargo(planilla_id: ID!, descripcion: String!): Response
+    """ crear cronograma """
+    createCronograma(input: inputCreateCronograma): Response
+    """ crear remuneracion """
+    createRemuneracion(input: inputCreateRemuneracion): Response
+    """ crear type_concepto """
+    createTypeConcepto(resolucion: String!): Response
+    """ create concepto """
+    createConcepto(input: inputCreateConcepto): Response
+}

@@ -1,0 +1,17 @@
+
+""" Response basico """
+type Response {
+    success: Boolean!
+    code: String!
+    message: String!
+}
+
+
+""" Response Works """
+type WorksResponse {
+    perPage: Int
+    lastPage: Int
+    page: Int
+    total: Int
+    data: [Work]
+}

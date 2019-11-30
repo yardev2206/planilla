@@ -1,0 +1,96 @@
+
+input inputCreateHistory {
+    persona_id: ID!
+    work_id: ID!
+    cronograma_id: ID!
+    meta_id: ID!
+    planilla_id: ID!
+    cargo_id: ID!
+    categoria_id: ID!
+    banco_id: ID
+    numero_de_cuenta: String
+    afp_id: ID
+    type_afp_id: ID
+    numero_de_cussp: String
+    type_aporte_id: ID!
+    numero_de_aporte: String
+    sindicato_id: ID
+    observacion: String
+}
+
+
+input inputCreateMeta {
+    id: ID!
+    descripcion: String!
+    sectorID: String!
+    sector: String!
+    pliegoID: ID!
+    pliego: String!
+    unidadID: String!
+    unidad: String!
+    programaID: String!
+    programa: String!
+    funcionID: String!
+    funcion: String!
+    subProgramaID: ID!
+    subPrograma: String!
+    actividadID: ID!
+    actividad: String!
+}
+
+
+input inputCreatePlanilla {
+    slug: String!
+    descripcion: String!
+}
+
+
+input inputCreateCargo {
+    descripcion: String!
+    ext_pptto: String!
+    planilla_id: ID!
+    type_cargo_id: ID!
+}
+
+
+input inputCreateCategoria {
+    descripcion: String!
+    dedicacion: String
+    cargo_id: ID!
+}
+
+
+input inputCreateCronograma {
+    planilla_id: ID!
+    dias: Int!
+    mes: Int!
+    adicional: Boolean
+    observacion: String
+}
+
+
+input inputCreateTypeRemuneracion {
+    id: ID!
+    descripcion: String!
+    alias: String!
+    base_imponible: Boolean!
+    code_enc: String
+    orden: String!
+    edit: Boolean!
+}
+
+
+input inputCreateRemuneracion {
+    history_id: ID!
+    cronograma_id: ID!
+    type_remuneracion_id: ID!
+    monto: Float
+}
+
+
+
+input inputCreateConcepto {
+    type_remuneracion_id: ID!
+    categoria_id: ID!
+    monto: Float!
+}

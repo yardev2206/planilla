@@ -1,0 +1,182 @@
+
+""" tipo work """
+type History {
+    id: ID
+    persona_id: ID!
+    work_id: ID!
+    meta_id: ID!
+    planilla_id: ID!
+    cargo_id: ID!
+    categoria_id: ID!
+    banco_id: ID
+    numero_de_cuenta: String
+    afp_id: ID
+    type_afp_id: ID
+    numero_de_cussp: String
+    type_aporte_id: String
+    numero_de_aporte: String
+    sindicato_id: ID
+    observacion: String
+    base: String
+    base_enc: String
+    total_bruto: Float
+    total_descuentos: Float
+    total_aportes: Float
+    """ Relaciones del objecto """
+    sidicato: Sindicato
+    meta: Meta
+    sindicato: Sindicato
+    planilla: Planilla
+    cargo: Cargo
+    categoria: Categoria
+}
+
+
+""" tipo sindicato """
+type Sindicato {
+    id: ID
+    descripcion: String!
+    porcentaje: Float!
+    """ Relaciones """
+    works: [Work]
+}
+
+
+""" tipo planilla """
+type Planilla {
+    id: ID!
+    slug: String!
+    descripcion: String!
+    activo: Boolean
+    """ Relaciones """
+    cargos: [Cargo]
+    type_cargos: [TypeCargo]
+    works: [Work]
+}
+
+
+""" tipo type_cargo """
+type TypeCargo {
+    id: ID!
+    slug: String!
+    descripcion: String!
+    planilla_id: ID!
+    """ Relaciones """
+    planilla: Planilla
+}
+
+
+""" tipo cargo """
+type Cargo {
+    id: ID!
+    slug: String!
+    descripcion: String!
+    ext_pptto: String!
+    planilla_id: ID!
+    type_cargo_id: ID!
+    activo: Boolean!
+    """ Relaciones """
+    type_cargo: TypeCargo!
+    planilla: Planilla!
+    categorias: [Categoria]
+    works: [Work]
+}
+
+
+""" tipo categorias """
+type Categoria {
+    id: ID!
+    slug: String!
+    alias: String!
+    descripcion: String!
+    dedicacion: String
+    cargo_id: ID!
+    activo: Boolean!
+    """ Relaciones """
+    cargo: Cargo
+    works: [Work]
+}
+
+
+""" tipo meta """
+type Meta {
+    id: ID!
+    descripcion: String!
+    sectorID: String!
+    sector: String!
+    pliegoID: String!
+    pliego: String!
+    unidadID: String!
+    unidad: String!
+    programaID: String!
+    programa: String!
+    funcionID: String!
+    funcion: String!
+    subProgramaID: String!
+    subPrograma: String!
+    actividadID: String!
+    actividad: String!
+    activo: Boolean!
+    """ Relaciones """
+    works: [Work]
+}
+
+
+""" tipo crongorama """
+type Cronograma {
+    id: ID!
+    slug: String!
+    planilla_id: ID!
+    dias: Int!
+    mes: Int!
+    year: Int!
+    adicional: Boolean!
+    numero: Int
+    num_historial: Int!
+    observacion: String
+}
+
+
+
+""" tipo type_remunearcion """
+type TypeRemuneracion {
+    id: ID!
+    slug: String!
+    descripcion: String!
+    alias: String!
+    base_imponible: Boolean!
+    code_enc: String
+    orden: String
+    edit: Boolean!
+    activo: Boolean!
+}
+
+
+""" tipo remuneracion """
+type Remuneracion {
+    persona_id: ID!
+    work_id: ID!
+    history_id: ID!
+    type_remuneracion_id: ID!
+    base_imponible: Boolean!
+    monto: Float
+    orden: String
+    edit: Boolean!
+}
+
+
+""" tipo de type_concepto """
+type TypeConcepto {
+    id: ID!
+    slug: String!
+    resolucion: String!
+}
+
+
+""" tipo de conceptos """
+type Concepto {
+    id: ID!
+    type_remuneracion_id: ID!
+    categoria_id: ID!
+    monto: Float!
+}
