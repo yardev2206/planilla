@@ -7,9 +7,10 @@ class TypeDetalleSchema extends Schema {
   up () {
     this.create('type_detalles', (table) => {
       table.increments()
+      table.string('slug').unique();
       table.string('descripcion');
-      table.string('type_descuento_id');
-      table.double('porcentaje').defaultTo(0);
+      table.integer('type_descuento_id');
+      table.decimal('porcentaje', 10, 2).defaultTo(0);
       table.timestamps()
     })
   }

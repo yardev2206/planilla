@@ -7,14 +7,13 @@ class AporteSchema extends Schema {
   up () {
     this.create('aportes', (table) => {
       table.increments()
-      table.string('persona_id', 20);
-      table.integer('work_id', 20);
-      table.integer('history_id', 20);
-      table.integer('cronograma_id', 20);
-      table.string('type_aporte_id', 20);
-      table.double('monto').defaultTo(0);
-      table.string('orden');
-      table.boolean('edit');
+      table.integer('history_id').notNullable();
+      table.integer('type_aporte_id').notNullable();
+      table.decimal('monto', 12, 2).defaultTo(0);
+      table.string('orden').notNullable();
+      table.boolean('edit').defaultTo(true);
+      table.boolean('state').defaultTo(true);
+      table.unique(['history_id', 'type_aporte_id']);
       table.timestamps()
     })
   }

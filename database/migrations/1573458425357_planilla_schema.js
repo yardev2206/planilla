@@ -9,7 +9,9 @@ class PlanillaSchema extends Schema {
       table.increments()
       table.string('slug').unique();
       table.string('descripcion').notNullable();
-      table.boolean('activo').defaultTo(true);
+      table.string('plame_code');
+      table.string('plame_type');
+      table.boolean('state').defaultTo(true);
       table.timestamps()
     })
   }

@@ -10,9 +10,9 @@ class CargoSchema extends Schema {
       table.string('slug').unique();
       table.string('descripcion').notNullable();
       table.string('ext_pptto').notNullable();
-      table.integer('type_cargo_id', 20);
-      table.integer('planilla_id', 20);
-      table.boolean('activo').defaultTo(true);
+      table.integer('type_cargo_id').notNullable();
+      table.integer('planilla_id').notNullable();
+      table.boolean('state').defaultTo(true);
       table.timestamps()
     })
   }

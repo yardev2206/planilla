@@ -6,14 +6,13 @@ const Schema = use('Schema')
 class TypeAporteSchema extends Schema {
   up () {
     this.create('type_aportes', (table) => {
-      table.string('id').unique();
+      table.increments();
       table.string('slug').unique();
       table.string('descripcion').notNullable();
-      table.double('porcentaje');
-      table.string('code_enc', 20);
-      table.string('orden', 10)
-      table.boolean('edit').defaultTo(true);
-      table.boolean('activo').defaultTo(true);
+      table.string('alias').notNullable();
+      table.decimal('porcentaje', 10, 2).defaultTo(0);
+      table.decimal('monto').defaultTo(0);
+      table.boolean('state').defaultTo(true);
       table.timestamps()
     })
   }

@@ -7,14 +7,13 @@ class DescuentoSchema extends Schema {
   up () {
     this.create('descuentos', (table) => {
       table.increments()
-      table.string('persona_id', 20);
-      table.integer('work_id', 20);
       table.integer('history_id');
-      table.integer('cronograma_id', 20);
       table.integer('type_descuento_id', 20);
-      table.double('monto').defaultTo(0);
-      table.string('orden', 10);
+      table.decimal('monto').defaultTo(0);
+      table.string('orden').notNullable();
       table.boolean('edit').defaultTo(true);
+      table.boolean('state').defaultTo(true);
+      table.unique(['history_id', 'type_descuento_id']);
       table.timestamps()
     })
   }

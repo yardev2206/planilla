@@ -9,14 +9,13 @@ class CronogramaSchema extends Schema {
       table.increments()
       table.string('slug', 20).unique();
       table.integer('planilla_id', 20);
+      table.text('observacion');
       table.integer('dias');
       table.integer('mes');
       table.integer('year');
-      table.boolean('adicional').defaultTo(false);
-      table.integer('numero');
-      table.text('observacion');
-      table.integer('num_historial').defaultTo(0);
-      table.boolean('activo').defaultTo(true);
+      table.integer('adicional').defaultTo(0);
+      table.boolean('remanente').defaultTo(false);
+      table.boolean('state').defaultTo(true);
       table.timestamps()
     })
   }

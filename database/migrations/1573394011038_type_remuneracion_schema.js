@@ -6,15 +6,12 @@ const Schema = use('Schema')
 class TypeRemuneracionSchema extends Schema {
   up () {
     this.create('type_remuneracions', (table) => {
-      table.string('id').unique();
+      table.increments();
       table.string('slug').unique();
-      table.string('descripcion').unique();
-      table.string('alias').unique();
-      table.boolean('base_imponible').defaultTo(true);
-      table.string('code_enc');
+      table.string('descripcion').notNullable();
+      table.string('alias').notNullable();
       table.string('orden');
-      table.boolean('edit').defaultTo(true);
-      table.boolean('activo').defaultTo(true);
+      table.boolean('state').defaultTo(true);
       table.timestamps()
     })
   }

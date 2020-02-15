@@ -7,13 +7,10 @@ class DetalleSchema extends Schema {
   up () {
     this.create('detalles', (table) => {
       table.increments()
-      table.string('persona_id', 20);
-      table.integer('work_id', 20);
-      table.integer('history_id', 20);
-      table.integer('cronograma_id', 20);
-      table.string('type_descuento_id', 20);
-      table.integer('type_detalle_id', 20);
-      table.double('monto');
+      table.integer('history_id');
+      table.integer('type_detalle_id');
+      table.integer('type_descuento_id');
+      table.decimal('monto', 12, 2).defaultTo(0);
       table.timestamps()
     })
   }

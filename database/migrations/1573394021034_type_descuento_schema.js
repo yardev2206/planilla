@@ -6,13 +6,12 @@ const Schema = use('Schema')
 class TypeDescuentoSchema extends Schema {
   up () {
     this.create('type_descuentos', (table) => {
-      table.string('id').unique();
+      table.increments();
       table.string('slug').unique();
-      table.string('descripcion');
-      table.string('code_enc', 20);
-      table.string('orden', 10);
-      table.boolean('edit').defaultTo(true);
-      table.boolean('activo').defaultTo(true);
+      table.string('descripcion').notNullable();
+      table.string('alias').notNullable();
+      table.string('orden');
+      table.boolean('state').defaultTo(true);
       table.timestamps()
     })
   }
